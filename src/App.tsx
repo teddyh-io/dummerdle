@@ -247,7 +247,7 @@ function App() {
           ReactGA.event({
             category: 'User',
             action: 'Opened About'
-          });
+          })
         }
       >
         {ABOUT_GAME_MESSAGE}
