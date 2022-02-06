@@ -4,12 +4,13 @@ import { XCircleIcon } from '@heroicons/react/outline'
 
 type Props = {
   title: string
+  image: string
   children: React.ReactNode
   isOpen: boolean
   handleClose: () => void
 }
 
-export const BaseModal = ({ title, children, isOpen, handleClose }: Props) => {
+export const BaseModal = ({ title, image, children, isOpen, handleClose }: Props) => {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog
@@ -55,6 +56,9 @@ export const BaseModal = ({ title, children, isOpen, handleClose }: Props) => {
               </div>
               <div>
                 <div className="text-center">
+                <div className='mb-2'>
+                  <img className="object-scale-down h-24 w-96" src={image} />
+                </div>
                   <Dialog.Title
                     as="h3"
                     className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100"

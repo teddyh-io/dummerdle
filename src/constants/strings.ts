@@ -1,6 +1,6 @@
 export const GAME_TITLE = 'Dummerdle'
 
-export const WIN_MESSAGES = ['Great Job!', 'Awesome', 'Well done!']
+export const WIN_MESSAGES = ['Splendid', 'Awesome', 'Well done!', 'Amazing!', 'Great Job!', 'You got it!', 'Jed would be proud!', 'Giving your tuition a run for its money!']
 export const GAME_COPIED_MESSAGE = 'Game copied to clipboard'
 export const ABOUT_GAME_MESSAGE = 'About this game'
 export const NOT_ENOUGH_LETTERS_MESSAGE = 'Not enough letters'

@@ -11,6 +11,8 @@ import { Keyboard } from './components/keyboard/Keyboard'
 import { AboutModal } from './components/modals/AboutModal'
 import { InfoModal } from './components/modals/InfoModal'
 import { StatsModal } from './components/modals/StatsModal'
+import { NoDummerdleModal } from './components/modals/NoDummerdleModal'
+import ReactGA from 'react-ga'
 import {
   GAME_TITLE,
   WIN_MESSAGES,
@@ -41,6 +43,7 @@ function App() {
   const [isGameWon, setIsGameWon] = useState(false)
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false)
+  const [isNoDummerdleModalOpen, setIsNoDummerdleModalOpen] = useState(false)
   const [isNotEnoughLetters, setIsNotEnoughLetters] = useState(false)
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
   const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false)
@@ -71,6 +74,12 @@ function App() {
   const [stats, setStats] = useState(() => loadStats())
 
   useEffect(() => {
+    if (solution == 'XXXXX') {
+      setIsNoDummerdleModalOpen(true)
+    }
+  }, [])
+
+  useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add('dark')
     } else {
@@ -89,6 +98,10 @@ function App() {
 
   useEffect(() => {
     if (isGameWon) {
+      ReactGA.event({
+        category: 'User',
+        action: 'Won daily Dummerdle',
+      })
       setSuccessAlert(
         WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]
       )
@@ -98,6 +111,10 @@ function App() {
       }, ALERT_TIME_MS)
     }
     if (isGameLost) {
+      ReactGA.event({
+        category: 'User',
+        action: 'Lost daily Dummerdle',
+      })
       setTimeout(() => {
         setIsStatsModalOpen(true)
       }, ALERT_TIME_MS)
@@ -119,6 +136,11 @@ function App() {
   }
 
   const onEnter = () => {
+    ReactGA.event({
+      category: 'User',
+      action: 'Guessed' + currentGuess,
+    })
+
     if (isGameWon || isGameLost) {
       return
     }
@@ -210,6 +232,11 @@ function App() {
       <AboutModal
         isOpen={isAboutModalOpen}
         handleClose={() => setIsAboutModalOpen(false)}
+      />
+
+      <NoDummerdleModal
+        isOpen={isNoDummerdleModalOpen}
+        handleClose={() => setIsNoDummerdleModalOpen(true)}
       />
 
       <button

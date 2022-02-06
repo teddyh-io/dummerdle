@@ -1,4 +1,5 @@
 import { BaseModal } from './BaseModal'
+import ReactGA from 'react-ga';
 
 type Props = {
   isOpen: boolean
@@ -6,16 +7,34 @@ type Props = {
 }
 
 export const AboutModal = ({ isOpen, handleClose }: Props) => {
+  ReactGA.event({
+    category: 'User',
+    action: 'Opened About'
+  });
   return (
-    <BaseModal title="About" isOpen={isOpen} handleClose={handleClose}>
+    <BaseModal title="About" image='../../imgs/about.png' isOpen={isOpen} handleClose={handleClose}>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        This is an open source word guessing game -{' '}
+        Words brought to you by Christine Qian, Katie Riley, Lizzie DelMonico, and Tyler Garvey.<br></br>
+        Created and hosted by {' '}
         <a
-          href="https://github.com/hannahcode/GAME"
+          href="https://teddyh.io/?src=dummerdle"
           className="underline font-bold"
         >
-          check out the code here
-        </a>{' '}
+        Teddy Hwang
+        </a>
+        {' '} based on code by {' '}
+        <a
+          href="https://www.hannahmariepark.com/"
+          className="underline font-bold"
+        >
+        Hannah Park
+        </a>.<br></br>
+        <a
+          href="https://www.powerlanguage.co.uk/wordle/"
+          className="underline font-bold"
+        >
+        Original game
+        </a>{' '} created by Josh Wardle.<br></br>
       </p>
     </BaseModal>
   )
