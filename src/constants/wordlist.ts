@@ -1,5 +1,6 @@
 export const WORDS = [
   "hello",
+  "frost",
   "finch",
   "swaga",
   "apush",
