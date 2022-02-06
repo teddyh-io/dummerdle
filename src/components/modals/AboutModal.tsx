@@ -1,5 +1,4 @@
 import { BaseModal } from './BaseModal'
-import ReactGA from 'react-ga';
 
 type Props = {
   isOpen: boolean
