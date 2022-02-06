@@ -138,7 +138,7 @@ function App() {
   const onEnter = () => {
     ReactGA.event({
       category: 'User',
-      action: 'Guessed' + currentGuess,
+      action: 'Guessed ' + currentGuess,
     })
 
     if (isGameWon || isGameLost) {
