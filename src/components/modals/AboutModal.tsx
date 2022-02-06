@@ -7,10 +7,6 @@ type Props = {
 }
 
 export const AboutModal = ({ isOpen, handleClose }: Props) => {
-  ReactGA.event({
-    category: 'User',
-    action: 'Opened About'
-  });
   return (
     <BaseModal title="About" image='../../imgs/about.png' isOpen={isOpen} handleClose={handleClose}>
       <p className="text-sm text-gray-500 dark:text-gray-300">
