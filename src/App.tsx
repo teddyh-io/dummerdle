@@ -74,7 +74,7 @@ function App() {
   const [stats, setStats] = useState(() => loadStats())
 
   useEffect(() => {
-    if (solution == 'XXXXX') {
+    if (solution === 'XXXXX') {
       setIsNoDummerdleModalOpen(true)
     }
   }, [])

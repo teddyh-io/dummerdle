@@ -57,7 +57,7 @@ export const BaseModal = ({ title, image, children, isOpen, handleClose }: Props
               <div>
                 <div className="text-center">
                 <div className='mb-2'>
-                  <img className="object-scale-down h-24 w-96" src={image} />
+                  <img className="object-scale-down h-24 w-96" src={image} alt="" />
                 </div>
                   <Dialog.Title
                     as="h3"
