@@ -4,7 +4,7 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import ReactGA from 'react-ga'
-ReactGA.initialize('UA-219629182-1')
+ReactGA.initialize('UA-219629182-2')
 ReactGA.pageview(window.location.pathname + window.location.search)
 
 ReactDOM.render(
