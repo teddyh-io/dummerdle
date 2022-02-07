@@ -9,8 +9,8 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
   return (
     <BaseModal title="About" image='../../imgs/about.png' isOpen={isOpen} handleClose={handleClose}>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        Words brought to you by Christine Qian, Katie Riley, Lizzie DelMonico, and Tyler Garvey.<br></br>
-        Created and hosted by {' '}
+        Created by Christine Qian, Katie Riley, Lizzie DelMonico, and Tyler Garvey.<br></br>
+        Developed by {' '}
         <a
           href="https://teddyh.io/?src=dummerdle"
           className="underline font-bold"
