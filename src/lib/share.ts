@@ -6,7 +6,7 @@ export const shareStatus = (guesses: string[], lost: boolean) => {
   navigator.clipboard.writeText(
     `${GAME_TITLE} ${solutionIndex} ${lost ? 'X' : guesses.length}/6\n\n` +
       generateEmojiGrid(guesses) +
-    `\n\nPlay at https://dummerdle.teddyh.io`
+    `\n\nGo to https://dummerdle.teddyh.io to play!`
   )
 }
 
@@ -21,7 +21,7 @@ export const generateEmojiGrid = (guesses: string[]) => {
             case 'correct':
               return '🟥'
             case 'present':
-              return '🟦'
+              return '🟨'
             default:
               return '⬜'
           }

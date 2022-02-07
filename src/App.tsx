@@ -23,7 +23,7 @@ import {
   CORRECT_WORD_MESSAGE,
 } from './constants/strings'
 import { MAX_WORD_LENGTH, MAX_CHALLENGES } from './constants/settings'
-import { isWordInWordList, isWinningWord, solution } from './lib/words'
+import { isWordInWordList, isWinningWord, solution, solutionIndex } from './lib/words'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
   loadGameStateFromLocalStorage,
@@ -100,7 +100,7 @@ function App() {
     if (isGameWon) {
       ReactGA.event({
         category: 'User',
-        action: 'Won daily Dummerdle',
+        action: 'Won Dummerdle #' + solutionIndex + ' with ' + guesses.length + " tries.",
       })
       setSuccessAlert(
         WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]
@@ -113,7 +113,7 @@ function App() {
     if (isGameLost) {
       ReactGA.event({
         category: 'User',
-        action: 'Lost daily Dummerdle',
+        action: 'Lost Dummerdle #' + solutionIndex,
       })
       setTimeout(() => {
         setIsStatsModalOpen(true)
