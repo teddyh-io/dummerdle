@@ -193,8 +193,7 @@ function App() {
       <div className="flex w-80 mx-auto items-center mb-8 mt-12">
         <h1 className="text-xl ml-2.5 grow font-bold dark:text-white">
           {GAME_TITLE}
-        </h1><br>
-        <p>The Governor's Academy Wordle</p>
+        </h1>
         {isDarkMode ? (
           <SunIcon
             className="h-6 w-6 mr-2 cursor-pointer dark:stroke-white"
