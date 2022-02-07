@@ -103,11 +103,6 @@ function App() {
 
   useEffect(() => {
     if (isGameWon) {
-      ReactGA.event({
-        category: 'User',
-        action:
-          'Won Dummerdle #' + solutionIndex + ' on try #: ' + guesses.length,
-      })
       setSuccessAlert(
         WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]
       )
@@ -184,6 +179,11 @@ function App() {
 
       if (winningWord) {
         setStats(addStatsForCompletedGame(stats, guesses.length))
+        ReactGA.event({
+          category: 'User',
+          action:
+            'Won Dummerdle #' + solutionIndex + ' on try #: ' + guesses.length,
+        })
         return setIsGameWon(true)
       }
 
