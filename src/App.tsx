@@ -23,7 +23,12 @@ import {
   CORRECT_WORD_MESSAGE,
 } from './constants/strings'
 import { MAX_WORD_LENGTH, MAX_CHALLENGES } from './constants/settings'
-import { isWordInWordList, isWinningWord, solution, solutionIndex } from './lib/words'
+import {
+  isWordInWordList,
+  isWinningWord,
+  solution,
+  solutionIndex,
+} from './lib/words'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
   loadGameStateFromLocalStorage,
@@ -100,7 +105,8 @@ function App() {
     if (isGameWon) {
       ReactGA.event({
         category: 'User',
-        action: 'Won Dummerdle #' + solutionIndex,
+        action:
+          'Won Dummerdle #' + solutionIndex + ' on try #: ' + guesses.length,
       })
       setSuccessAlert(
         WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]
@@ -136,11 +142,6 @@ function App() {
   }
 
   const onEnter = () => {
-    ReactGA.event({
-      category: 'User',
-      action: 'Guessed ' + currentGuess,
-    })
-
     if (isGameWon || isGameLost) {
       return
     }
@@ -175,6 +176,11 @@ function App() {
     ) {
       setGuesses([...guesses, currentGuess])
       setCurrentGuess('')
+
+      ReactGA.event({
+        category: 'User',
+        action: 'Guessed ' + currentGuess,
+      })
 
       if (winningWord) {
         setStats(addStatsForCompletedGame(stats, guesses.length))
@@ -254,7 +260,7 @@ function App() {
           setIsAboutModalOpen(true)
           ReactGA.event({
             category: 'User',
-            action: 'Opened About'
+            action: 'Opened About',
           })
         }}
       >
