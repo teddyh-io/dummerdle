@@ -100,7 +100,7 @@ function App() {
     if (isGameWon) {
       ReactGA.event({
         category: 'User',
-        action: 'Won Dummerdle #' + solutionIndex + ' with ' + guesses.length + " tries.",
+        action: 'Won Dummerdle #' + solutionIndex,
       })
       setSuccessAlert(
         WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]
@@ -145,6 +145,10 @@ function App() {
       return
     }
     if (!(currentGuess.length === MAX_WORD_LENGTH)) {
+      ReactGA.event({
+        category: 'User',
+        action: 'Guessed word was not enough letters:' + currentGuess,
+      })
       setIsNotEnoughLetters(true)
       return setTimeout(() => {
         setIsNotEnoughLetters(false)
@@ -152,6 +156,10 @@ function App() {
     }
 
     if (!isWordInWordList(currentGuess)) {
+      ReactGA.event({
+        category: 'User',
+        action: 'Guessed word was not in word list:' + currentGuess,
+      })
       setIsWordNotFoundAlertOpen(true)
       return setTimeout(() => {
         setIsWordNotFoundAlertOpen(false)
