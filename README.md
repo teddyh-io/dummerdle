@@ -8,16 +8,9 @@ Hey Govs! If you have heard of or played Wordle, listen up! Katie, Christine, Li
 Clone the repository and perform the following command line actions:
 
 ```bash
-$> cd word-guessing-game
+$> cd dummerdle
 $> npm install
 $> npm run start
-```
-
-### To build/run docker container:
-
-```bash
-$> docker build -t game .
-$> docker run -d -p 3000:3000 game
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in browser.
